@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://bg0ua34f33ge8"]
+
+[ext_resource type="Script" uid="uid://egwqmh1ixm52" path="res://play_field.gd" id="1_hnwa6"]
+[ext_resource type="Texture2D" uid="uid://drd20ap0voomv" path="res://board.png" id="2_xwxci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3jvx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yyx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osafy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruo41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leejk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix83b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cibh1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ora6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhwlt"]
+
+[node name="PlayField" type="Node2D"]
+script = ExtResource("1_hnwa6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(268, 272)
+texture = ExtResource("2_xwxci")
+
+[node name="Square_1" type="Area2D" parent="."]
+position = Vector2(90, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_1"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_o3jvx")
+
+[node name="Square_2" type="Area2D" parent="."]
+position = Vector2(270, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_2"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_6yyx1")
+
+[node name="Square_3" type="Area2D" parent="."]
+position = Vector2(450, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_3"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_osafy")
+
+[node name="Square_4" type="Area2D" parent="."]
+position = Vector2(90, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_4"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_ruo41")
+
+[node name="Square_5" type="Area2D" parent="."]
+position = Vector2(270, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_5"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_leejk")
+
+[node name="Square_6" type="Area2D" parent="."]
+position = Vector2(450, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_6"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_ix83b")
+
+[node name="Square_7" type="Area2D" parent="."]
+position = Vector2(90, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_7"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_cibh1")
+
+[node name="Square_8" type="Area2D" parent="."]
+position = Vector2(270, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_8"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_ora6e")
+
+[node name="Square_9" type="Area2D" parent="."]
+position = Vector2(450, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Square_9"]
+scale = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_jhwlt")
+
+[connection signal="input_event" from="Square_1" to="." method="_on_square_1_input_event"]
+[connection signal="input_event" from="Square_2" to="." method="_on_square_2_input_event"]
+[connection signal="input_event" from="Square_3" to="." method="_on_square_3_input_event"]
+[connection signal="input_event" from="Square_4" to="." method="_on_square_4_input_event"]
+[connection signal="input_event" from="Square_5" to="." method="_on_square_5_input_event"]
+[connection signal="input_event" from="Square_6" to="." method="_on_square_6_input_event"]
+[connection signal="input_event" from="Square_7" to="." method="_on_square_7_input_event"]
+[connection signal="input_event" from="Square_8" to="." method="_on_square_8_input_event"]
+[connection signal="input_event" from="Square_9" to="." method="_on_square_9_input_event"]
