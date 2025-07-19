@@ -1,24 +1,42 @@
 extends Node2D
-signal restart
+signal game_over
 
 var Piece_X = preload("res://piece_x.tscn")
 var Piece_O = preload("res://piece_o.tscn")
 
+# Dictionary to keep track of active player 'name'.
+var active_player = { 1:"X", -1:"O" }
+
+# Grid used to calculate win conditions.
 var magic_grid = [8,3,4,
-					1,5,9,
-					6,7,2]
+				  1,5,9,
+				  6,7,2]
+
+# Array to keep track of board states.
 var board = [0,0,0,
 			 0,0,0,
 			 0,0,0]
+
+# Keeps track of the number of moves (Max 9)
 var move_count = 0
+
 # 1 for Player 1 (X) and -1 for Player 2 (O)
 var turn = 1
 
-func place_piece(pos, place):
-	turn *= -1
+func place_piece(pos, place) -> void:
+	# Check if game has not ended in a draw.
+	if move_count == 8:
+		print("DRAW")
+		game_over.emit()
+
+	print(active_player[turn], "'s Move...")
+	
+	# Check if square is available.
 	if board[place-1] != 0:
 		print("Invalid Move")
 	else:
+		# Creates instance of piece and places it in center of square.
+		# Marks position in board array with appropriate state.
 		if turn < 0:
 			var new_piece = Piece_X.instantiate()
 			new_piece.position = pos
@@ -28,14 +46,16 @@ func place_piece(pos, place):
 			var new_piece = Piece_O.instantiate()
 			new_piece.position = pos
 			add_child(new_piece)
-			board[place -1 ] = turn
-		
-		move_count = move_count+1
-		print("Turn: ", turn)
+			board[place -1 ] = turn	
 
 	check_for_win()
+	move_count = move_count + 1
 
-func check_for_win():
+	print("Move Count: ", move_count)
+	# Switch active player
+	turn *= -1
+
+func check_for_win() -> void:
 	for i in 8:
 		for j in 8:
 			for k in 8:
@@ -43,16 +63,12 @@ func check_for_win():
 					if board[i] == turn and board[j] == turn and board[k] == turn:
 						if magic_grid[i] + magic_grid[j] + magic_grid[k] == 15:
 							print(turn, " Wins!")
+							game_over.emit()
 							return
 
-	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_square_1_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (event is InputEventMouseButton && event.pressed):

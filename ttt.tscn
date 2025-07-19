@@ -1,11 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqk4ipkyh7l82"]
+[gd_scene load_steps=2 format=3 uid="uid://cqk4ipkyh7l82"]
 
-[ext_resource type="Script" uid="uid://hsvoisseflp8" path="res://ttt.gd" id="1_o2ppi"]
-[ext_resource type="PackedScene" uid="uid://bg0ua34f33ge8" path="res://play_field.tscn" id="2_hwxy7"]
+[ext_resource type="Script" path="res://ttt.gd" id="1_o2ppi"]
 
 [node name="TTT" type="Node"]
 script = ExtResource("1_o2ppi")
-
-[node name="PlayField" parent="." instance=ExtResource("2_hwxy7")]
-
-[connection signal="restart" from="PlayField" to="." method="_on_play_field_restart"]
