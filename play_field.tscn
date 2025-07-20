@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bg0ua34f33ge8"]
+[gd_scene load_steps=13 format=3 uid="uid://bg0ua34f33ge8"]
 
 [ext_resource type="Script" path="res://play_field.gd" id="1_hnwa6"]
 [ext_resource type="Texture2D" uid="uid://drd20ap0voomv" path="res://board.png" id="2_xwxci"]
+[ext_resource type="PackedScene" uid="uid://sju0fxillsjn" path="res://game_over_screen.tscn" id="3_2m36t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3jvx"]
 
@@ -90,6 +91,10 @@ position = Vector2(450, 450)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Square_9"]
 scale = Vector2(9, 9)
 shape = SubResource("RectangleShape2D_jhwlt")
+
+[node name="GameOverScreen" parent="." instance=ExtResource("3_2m36t")]
+visible = false
+z_index = 1
 
 [connection signal="input_event" from="Square_1" to="." method="_on_square_1_input_event"]
 [connection signal="input_event" from="Square_2" to="." method="_on_square_2_input_event"]

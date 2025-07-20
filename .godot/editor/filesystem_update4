@@ -1,0 +1,7 @@
+res://game_over_screen.tscn
+res://game_over_screen.gd
+res://play_field.gd
+res://ttt.gd
+res://play_field.tscn
+res://start_screen.tscn
+res://global.gd
